@@ -7,7 +7,7 @@ This project documents the creation of a fully functional Active Directory home 
 - Windows 11
 - PowerShell
 
-<h1 align="center">Project Overview: Network Diagram</h1>
+# Project Overview: Network Diagram
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Full%20Diagram.png?raw=true)
 
