@@ -24,3 +24,8 @@ After we assign the IP address, we will name the server and will install an acti
 <h1 align="center">Step 3:</h1>
 We are then going to configure NAT and Routing so that clients on the internal network will be able to access the internet through the Domain Controller. 
 
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%203.png?raw=true)
+
+<h1 align="center">Step 4:</h1>
+Next we’re going to set up DHCP on the Domain Controller so when we create a Windows 11 machine it will automatically be assigned an IP Address. 
+
