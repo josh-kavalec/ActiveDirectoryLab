@@ -7,43 +7,44 @@ This project documents the creation of a fully functional Active Directory home 
 - Windows 11
 - PowerShell
 
-<h1 align="center">Project Overview: Network Diagram</h1>
+# Project Overview: 
+<h1 align="center">Network Diagram</h1>
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Full%20Diagram.png?raw=true)
 
-# Step 1:
+<h1 align="center">Step 1:</h1>
 The first virtual machine created is the Domain Controller which is where Active Directory is created. This virtual machine contains two network adapters, one that connects to the Internet on the outside, and another that connects to the Internal network on the inside that clients will connect to. After the virtual machine is created, Windows Server 2022 is installed and will be assigned an IP address to the Internal network. The external network will automatically be assigned an IP address from the home router (DHCP). 
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%201.png?raw=true)
 
-# Step 2:
+<h1 align="center">Step 2:</h1>
 After we assign the IP address, we will name the server and will install an active directory and create our domain. 
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%202.png?raw=true)
 
-# Step 3:
+<h1 align="center">Step 3:</h1>
 We are then going to configure NAT and Routing so that clients on the internal network will be able to access the internet through the Domain Controller. 
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%203.png?raw=true)
 
-# Step 4:
+<h1 align="center">Step 4:</h1>
 Next we’re going to set up DHCP on the Domain Controller so when we create a Windows 11 machine it will automatically be assigned an IP Address. 
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%204.png?raw=true)
 
-# Step 5:
+<h1 align="center">Step 5:</h1>
 Before we create our client virtual machine, the final thing we do in the Domain Controller is we’re going to run a PowerShell script that will automatically create a thousand users in Active Directory. 
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshopt%205.png?raw=true)
 
-# Step 6:
+<h1 align="center">Step 6:</h1>
 After creating the users, we’re going to create another virtual machine and install Windows 11 and that virtual machine will be connected to the private VirtualBox network. We will name that machine Client 1 and join it to the domain. We will then log in with one of the domain accounts.
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%206.png?raw=true)
 
-<h1 align="center">Step-by-Step Project Walkthrough</h1>
+# Step-by-Step Project Walkthrough
 
-# Step 1 Walkthrough: 
+<h1 align="center">Step 1 Walkthrough:</h1>
 
 We created our first virtual machine labeled “Domain Controller” in which I currently have Windows Server 2022 Installed. 
 
@@ -113,7 +114,7 @@ After doing so, we will restart the Virtual Machine.
 
 So far throughout this process we have created a Virtual Machine for our Internet NIC and our Internal NIC in which we assigned it an IP address. We also renamed our PC to DC (short for Domain Controller). 
 
-# Step 2 Walkthrough: 
+<h1 align="center">Step 2 Walkthrough:</h1> 
 
 Our next steps are to install Active Directory Domain Services and create a Domain. To begin, we will start from the Server Manager Dashboard and select Add roles and features. 
 
@@ -231,7 +232,7 @@ We are going to use our Domain Admin account we previously created. The User I c
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/45.png?raw=true)
 
-# Step 3 Walkthrough: 
+<h1 align="center">Step 3 Walkthrough:</h1>
 
 Looking Back on our Network Diagram, the next step is to install the Remote Access Service (RAS)/ Network Address Translation (NAT). The purpose of this step is when we create our Windows 11 client, it will allow the client to be on a Private Virtual Network, but still have access to the Internet through the Domain Controller. 
 
@@ -269,7 +270,7 @@ Under NAT Internet Connection, select the Network Interface “Internet” which
 
 We have now configured both the Remote Access Service (RAS) and Network Address Translation (NAT). Since this is completed, once we create our Windows 11 clients, they should be able to connect to the Internet. 
 
-# Step 4 Walkthrough:
+<h1 align="center">Step 4 Walkthrough:</h1>
 
 The next step in our Network Diagram is to set up the DHCP Server on our Domain Controller. This will allow our Windows 11 Clients to get an IP address which will allow them to connect to the Internet even though they will be on their own Private Network. 
 
@@ -339,7 +340,7 @@ We can now see that our IPv4 and IPv6 have turned green which indicates that our
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/66.png?raw=true)
 
-# Step 5 Walkthrough: 
+<h1 align="center">Step 5 Walkthrough:</h1>
 
 Now that we have our DNS configured, our next step is to use our PowerShell script to create 1,000 sample users and create our client computer. Before moving forward, for the purpose of this project we are going to make a configuration that will allow us to browse the Internet on the Virtual Machine. Typically we would not do this in a production environment, but for the lab we will do the configuration. 
 
@@ -425,7 +426,7 @@ If we also go under Find Users, Contacts, and Groups we are able to find the use
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/85.png?raw=true)
 
-# Step 6 Walkthrough: 
+<h1 align="center">Step 6 Walkthrough:</h1>
 
 Now that all of the users are created and our whole environment is set up, our last step based on the Network Diagram is to create the Windows 11 Virtual Machine in VirtualBox. This Virtual Machine is going to use an Internal Network Adapter and should get an IP address from the DHCP Server we configured and verify after the fact. (Make sure you use Windows 11 Pro)
 
@@ -493,7 +494,7 @@ If we open our command prompt and enter whoami, we can see the user we created. 
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/100.png?raw=true)
 
-<h1 align="center">What I Learned</h1>
+# What I Learned: 
 
 This project successfully demonstrated the deployment and configuration of a functional Active Directory environment within a virtualized home lab using Oracle VirtualBox. By implementing a Windows Server 2022 domain controller and a Windows 11 client, I gained hands-on experience configuring essential enterprise services, including Active Directory Domain Services (AD DS), DNS, DHCP, and RAS/NAT. I also used PowerShell to automate user account creation, reinforcing the importance of scripting and automation in systems administration.
 
