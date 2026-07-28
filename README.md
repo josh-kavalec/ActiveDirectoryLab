@@ -427,3 +427,69 @@ If we also go under Find Users, Contacts, and Groups we are able to find the use
 
 # Step 6 Walkthrough: 
 
+Now that all of the users are created and our whole environment is set up, our last step based on the Network Diagram is to create the Windows 11 Virtual Machine in VirtualBox. This Virtual Machine is going to use an Internal Network Adapter and should get an IP address from the DHCP Server we configured and verify after the fact. (Make sure you use Windows 11 Pro)
+
+Now we have created our new Virtual Machine and named it Client: 1.
+ 
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/86.png?raw=true)
+
+Under our Client 1 Network Settings, instead of using NAT as our Network Adapter and connecting to our home network, I will change this to Internal Network since we configured our Client 1 user to use the Internal Network. This will allow us to get a DHCP address from the Domain Controller to emulate a corporate network. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/87.png?raw=true)
+
+For the Client: 1 Virtual Machine we are going to name this local computer User. (You can click Next on Password)
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/88.png?raw=true)
+
+Once logged into the Client: 1 Windows 11 Pro, we will open up the Command Prompt. We will use the command ipconfig to show us the IP address, Subnet Mask, and Default Gateway. We will notice that the DNS Suffix is mydomain.com which shows our Active Directory domain. (Make sure you have Domain Controller Virtual Machine running) 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/89.png?raw=true)
+
+In the Command Prompt we will try to ping something on the internet. For Example, we will enter ping www.google.com 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/90.png?raw=true)
+
+Since we can ping the Internet, this means that our whole infrastructure (based on our Network Diagram) is set up correctly. We have connectivity all the way to the Default Gateway (which is the Domain Controller) and the Domain Controller is properly forwarding it out to the Internet. 
+
+Next we are going to enter ping mydomain.com which is our Domain Controller (make sure you have the Domain Controller Virtual Machine running) 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/91.png?raw=true)
+
+Before we do anything with our client computer, let's rename it. Right click the Start menu and select System. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/92.png?raw=true)
+
+Instead of clicking “Rename this PC” we are going to scroll down to Advanced System Settings because we can join the domain at the same time. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/93.png?raw=true)
+
+Select Computer name in System Properties and select Change. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/94.png?raw=true)
+
+We will rename the computer name to CLIENT1. We will select Domain and enter mydomain.com and click OK. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/95.png?raw=true)
+
+Under Computer Name/ Domain Changes we will enter the credentials of the Administer Account we created. In this example mine was a-jsmith and the password I created. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/96.png?raw=true)
+
+Once the credentials are entered and approved, restart the machine. 
+
+If we go back to our Domain Controller, select Start > Windows Administrative Tools > Active Directory Users and Computers.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/97.png?raw=true)
+
+If we select Computers, we can now see that CLIENT1 is a member of the domain.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/98.png?raw=true)
+
+Once the Client 1 machine is restarted, instead of logging in to the local user that we created, select Other user. Notice under the log in credentials we see “Sign in to: MYDOMAIN”. We can sign in to one of the user accounts we created earlier. In this case, my user jsmith. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/99.png?raw=true)
+
+If we open our command prompt and enter whoami, we can see the user we created. If we enter ipconfig /all we can see that we are connected to mydomain.com
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/100.png?raw=true)
+
