@@ -43,6 +43,8 @@ After creating the users, we’re going to create another virtual machine and in
 
 <h1 align="center">Step-by-Step Project Walkthrough</h1>
 
+# Step 1 Walkthrough: 
+
 We created our first virtual machine labeled “Domain Controller” in which I currently have Windows Server 2022 Installed. 
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%207.png?raw=true)
@@ -109,7 +111,11 @@ We will rename this PC “DC” which is short for Domain Controller.
 
 After doing so, we will restart the Virtual Machine. 
 
-So far throughout this process we have created a Virtual Machine for our Internet NIC and our Internal NIC in which we assigned it an IP address. We also renamed our PC to DC (short for Domain Controller). Our next steps are to install Active Directory Domain Services and create a Domain. To begin, we will start from the Server Manager Dashboard and select Add roles and features. 
+So far throughout this process we have created a Virtual Machine for our Internet NIC and our Internal NIC in which we assigned it an IP address. We also renamed our PC to DC (short for Domain Controller). 
+
+# Step 2 Walkthrough: 
+
+Our next steps are to install Active Directory Domain Services and create a Domain. To begin, we will start from the Server Manager Dashboard and select Add roles and features. 
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%2022.png?raw=true)
 
@@ -225,6 +231,8 @@ We are going to use our Domain Admin account we previously created. The User I c
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/45.png?raw=true)
 
+# Step 3 Walkthrough: 
+
 Looking Back on our Network Diagram, the next step is to install the Remote Access Service (RAS)/ Network Address Translation (NAT). The purpose of this step is when we create our Windows 11 client, it will allow the client to be on a Private Virtual Network, but still have access to the Internet through the Domain Controller. 
 
 To do this, under the Server Manager Dashboard, we will select Add roles and features. 
@@ -261,4 +269,4 @@ Under NAT Internet Connection, select the Network Interface “Internet” which
 
 We have now configured both the Remote Access Service (RAS) and Network Address Translation (NAT). Since this is completed, once we create our Windows 11 clients, they should be able to connect to the Internet. 
 
-
+# Step 4 Walkthrough:
