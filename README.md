@@ -40,3 +40,18 @@ Before we create our client virtual machine, the final thing we do in the Domain
 After creating the users, we’re going to create another virtual machine and install Windows 11 and that virtual machine will be connected to the private VirtualBox network. We will name that machine Client 1 and join it to the domain. We will then log in with one of the domain accounts.
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%206.png?raw=true)
+
+# Step-by-Step Project Walkthrough
+
+We created our first virtual machine labeled “Domain Controller” in which I currently have Windows Server 2022 Installed. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%207.png?raw=true)
+
+We will then proceed to configure the virtual machine labeled “Domain Controller.” Clicking on Settings, and clicking onto the Network tab, we can see that we currently have one Network Adapter connected. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%208.png?raw=true)
+
+Based on the Network Diagram previously listed, we have two network adapters connected to the Domain Controller. We must select Adapter Two and Enable Network Adapter. Next to the “Attached to” dropdown, we will select Internal Network. This is because we already have one dedicated for the Internet, and now we have one for our Internal Network. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%209.png?raw=true)
+
