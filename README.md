@@ -87,7 +87,6 @@ Select Internet Protocol Version 4 (TCP/IPv6)
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%2017.png?raw=true)
 
-
 We will then set the IP address of the Internal Network that is stated in the previous Diagram:
 - IP address: 172.16.0.1
 - Subnet Mask: 255.255.255.0
@@ -108,5 +107,158 @@ We will rename this PC “DC” which is short for Domain Controller.
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%2021.png?raw=true)
 
-
 After doing so, we will restart the Virtual Machine. 
+
+So far throughout this process we have created a Virtual Machine for our Internet NIC and our Internal NIC in which we assigned it an IP address. We also renamed our PC to DC (short for Domain Controller). Our next steps are to install Active Directory Domain Services and create a Domain. To begin, we will start from the Server Manager Dashboard and select Add roles and features. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%2022.png?raw=true)
+
+Under Before You Begin, click Next
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%2023.png?raw=true)
+
+Under Installation Type, make sure that Role-based or feature-based installation is selected. Click Next.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%2024.png?raw=true)
+
+Under Server Selection, this is going to be the server where we want to install Active Directory Domain Services. Click Next. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%2025.png?raw=true)
+
+Under Server Roles, select Active Directory Domain Services. Click Next
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%2026.png?raw=true)
+
+Under Features, Click Next. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%2027.png?raw=true)
+
+You will Click Next through AD DS and Confirmation and the Click Install. 
+
+Once the installation is complete, Click Close. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/28.png?raw=true)
+
+Notice in the top right of the Server Manager Dashboard, the flag with a yellow exclamation mark. Click on it. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/29.png?raw=true)
+
+Click “Promote this server to a domain controller” 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/30.png?raw=true)
+
+Under Deployment Configuration Select “Add a new Forest” and insert mydomain.com for the Root Domain Name. Click Next.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/31.png?raw=true)
+
+Under Domain Controller Options, create a Directory Services Restore Mode (DSRM) password, Click Next
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/32.png?raw=true)
+
+Click Next throughout the rest of the Active Directory Domain Services Configuration Wizard until the Install option appears. Click Install.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/33.png?raw=true)
+
+The computer will automatically restart. Sign back in.
+
+Moving forward, we are now going to create our own dedicated Domain Admin Account rather than using the built-in Administrator account. 
+Click the Start icon in the bottom left and select the Windows Administrative Tools folder, and Select Active Directory Users and Computers
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/34.png?raw=true)
+
+With the Active Directory Users and Computers window open, we can see on the left side our newly created domain titled mydomain.com
+
+Next, we will create an Organizational unit to put our Admin account in. We will right click on mydomain.com, select New, and click Organizational Unit.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/35.png?raw=true)
+
+We can think of this as a folder in Active Directory. We will name this _ADMINS and then Click OK. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/36.png?raw=true)
+
+We will create a new user by right clicking on _ADMINS, select New, and Click User. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/37.png?raw=true)
+
+For this example, we will create the User John Smith. For the User logon name, we will use a-jsmith to signify that this is an admin account for John Smith. 
+ 
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/38.png?raw=true)
+
+We will then create a password for the User account. I disabled “User must change password at next logon” and selected “Password never expires” due to this being in a lab environment.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/39.png?raw=true)
+
+Select Next, and then Finish.
+
+You’ll notice we have our account set up under _ADMINS, but it is not an Admin yet even though we named it a-jsmith. 
+
+To make a Domain Admin, we will right click on the User, and Select Properties
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/40.png?raw=true)
+
+Then Select Member Of
+ 
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/41.png?raw=true)
+
+Select Add
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/42.png?raw=true)
+
+Under “Enter the object names to select” we will input domain admins. We will then select Check Names.
+ 
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/43.png?raw=true)
+
+Select OK, and click Apply, and then click OK again. 
+
+Now we have our very own Domain Admin account. To use this, we will then Sign out of the Domain Controller. 
+
+Instead of signing in to the Administrator, we will select other user. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/44.png?raw=true)
+
+Under the Other user sign in, we can see “Sign in to: MYDOMAIN”
+
+We are going to use our Domain Admin account we previously created. The User I created, John Smith:
+
+- Username: a-jsmith
+- Password: The password you created for the User
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/45.png?raw=true)
+
+Looking Back on our Network Diagram, the next step is to install the Remote Access Service (RAS)/ Network Address Translation (NAT). The purpose of this step is when we create our Windows 11 client, it will allow the client to be on a Private Virtual Network, but still have access to the Internet through the Domain Controller. 
+
+To do this, under the Server Manager Dashboard, we will select Add roles and features. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/46.png?raw=true)
+
+Select Next through Before you Begin, Installation Type, and Server Selection. Under Server Roles, we will enable Remote Access which is the role we need to install. Click Next
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/47.png?raw=true)
+
+Click Next under Features. 
+
+Under Roles features, we are going to install Routing. Once enabled, DirectAccess and VPN (RAS) will also be automatically selected. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/48.png?raw=true)
+
+Continue to Click Next, then Install.
+
+After the installation we will close out the Add Roles and Features Wizard. From the Server Manager Dashboard, we will select Tools in the right-hand corner and select Routing and Remote Access.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/49.png?raw=true)
+
+We will right click on our Domain Controller (DC) local and select Configure and Enable Routing and Remote Access.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/50.png?raw=true)
+
+We will click Next. Under Configuration, we will select Network Address Translation (NAT) which will allow internal clients to connect to the Internet using one public IP address. Then click Next. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/51.png?raw=true)
+
+Under NAT Internet Connection, select the Network Interface “Internet” which we had previously renamed. Then click Next. Click Finish. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/52.png?raw=true)
+
+We have now configured both the Remote Access Service (RAS) and Network Address Translation (NAT). Since this is completed, once we create our Windows 11 clients, they should be able to connect to the Internet. 
+
+
