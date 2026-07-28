@@ -341,3 +341,89 @@ We can now see that our IPv4 and IPv6 have turned green which indicates that our
 
 # Step 5 Walkthrough: 
 
+Now that we have our DNS configured, our next step is to use our PowerShell script to create 1,000 sample users and create our client computer. Before moving forward, for the purpose of this project we are going to make a configuration that will allow us to browse the Internet on the Virtual Machine. Typically we would not do this in a production environment, but for the lab we will do the configuration. 
+
+In the Server Manager Dashboard, we are going to click on Configure this local server. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/67.png?raw=true)
+
+Under the Local Server we are going to click on the IE Enhanced Security Configuration. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/68.png?raw=true)
+
+We will select Off for both Administrators and Users. Click OK.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/69.png?raw=true)
+
+We will then open Microsoft Edge (or another Internet browser) and paste this link. This link is a .zip file that contains the names of the users we will create using PowerShell. 
+
+https://github.com/joshmadakor1/AD_PS/archive/master.zip
+
+Once the link is entered, the .zip file will appear under Downloads. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/70.png?raw=true)
+
+We will then save AD_PS-master.zip on our Desktop. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/71.png?raw=true)
+
+In this folder, we have a file titled “names” which is a list of randomly generated first and last names. These will be the 1,000 users we will add using our PowerShell script. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/72.png?raw=true)
+
+We will then add the user that we had previously created. In this case, John Smith.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/73.png?raw=true)
+
+We will click Windows Start, Select Windows Powershell, scroll down to Windows PowerShell ISE, right click and select More, and click Run as administrator.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/74.png?raw=true)
+
+Once Windows PowerShell ISE is open, select the folder icon (Open Script) in the top left corner. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/75.png?raw=true)
+
+We will select the folder we saved to our Desktop (AD_PS-master) and select the PowerShell script titled “1_CREATE_USERS”. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/76.png?raw=true)
+
+The script should now appear Within Windows PowerShell ISE.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/77.png?raw=true)
+
+If we run this script, we receive an error. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/78.png?raw=true)
+
+This is a security feature, but since we are in a closed environment, we are going to un-restrict the execution policy. Within the script we will write the following: 
+
+Set-ExecutionPolicy Unrestricted
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/79.png?raw=true)
+
+An Execution Policy Change window will appear and we will select “Yes to All”. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/80.png?raw=true)
+
+Before we run this script, we have to go to the actual directory where the script is. We are going to change the directory and select the user which we are logged in as. In this example, it is a-jsmith. The script was saved on the Desktop and we selected the file where the script is. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/81.png?raw=true)
+
+If we list the directory (ls), we can see the names.txt from the script.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/82.png?raw=true)
+
+We will then select Run Script and select “Run once”. As we run the script, we can see the new users being created. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/83.png?raw=true)
+
+If we open Active Directory, we can now see all the new users created. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/84.png?raw=true)
+
+If we also go under Find Users, Contacts, and Groups we are able to find the user that we previously created. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/85.png?raw=true)
+
+Step 6 Walkthrough: 
+
