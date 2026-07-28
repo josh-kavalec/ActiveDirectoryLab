@@ -7,7 +7,7 @@ This project documents the creation of a fully functional Active Directory home 
 - Windows 11
 - PowerShell
 
-<h1 align="center">Network Diagram</h1>
+<h1 align="center">Project Overview: Network Diagram</h1>
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Full%20Diagram.png?raw=true)
 
@@ -18,4 +18,9 @@ The first virtual machine created is the Domain Controller which is where Active
 
 <h1 align="center">Step 2:</h1>
 After we assign the IP address, we will name the server and will install an active directory and create our domain. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%202.png?raw=true)
+
+<h1 align="center">Step 3:</h1>
+We are then going to configure NAT and Routing so that clients on the internal network will be able to access the internet through the Domain Controller. 
 
