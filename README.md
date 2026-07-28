@@ -339,3 +339,5 @@ We can now see that our IPv4 and IPv6 have turned green which indicates that our
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/66.png?raw=true)
 
+# Step 5 Walkthrough: 
+
