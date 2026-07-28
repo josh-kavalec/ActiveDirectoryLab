@@ -425,5 +425,5 @@ If we also go under Find Users, Contacts, and Groups we are able to find the use
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/85.png?raw=true)
 
-Step 6 Walkthrough: 
+# Step 6 Walkthrough: 
 
