@@ -34,3 +34,8 @@ Next we’re going to set up DHCP on the Domain Controller so when we create a W
 <h1 align="center">Step 5:</h1>
 Before we create our client virtual machine, the final thing we do in the Domain Controller is we’re going to run a PowerShell script that will automatically create a thousand users in Active Directory. 
 
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshopt%205.png?raw=true)
+
+<h1 align="center">Step 6:</h1>
+After creating the users, we’re going to create another virtual machine and install Windows 11 and that virtual machine will be connected to the private VirtualBox network. We will name that machine Client 1 and join it to the domain. We will then log in with one of the domain accounts.
+
