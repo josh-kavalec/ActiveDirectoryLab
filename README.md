@@ -29,3 +29,8 @@ We are then going to configure NAT and Routing so that clients on the internal n
 <h1 align="center">Step 4:</h1>
 Next we’re going to set up DHCP on the Domain Controller so when we create a Windows 11 machine it will automatically be assigned an IP Address. 
 
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%204.png?raw=true)
+
+<h1 align="center">Step 5:</h1>
+Before we create our client virtual machine, the final thing we do in the Domain Controller is we’re going to run a PowerShell script that will automatically create a thousand users in Active Directory. 
+
