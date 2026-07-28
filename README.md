@@ -493,3 +493,10 @@ If we open our command prompt and enter whoami, we can see the user we created. 
 
 ![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/100.png?raw=true)
 
+<h1 align="center">What I Learned</h1>
+
+This project successfully demonstrated the deployment and configuration of a functional Active Directory environment within a virtualized home lab using Oracle VirtualBox. By implementing a Windows Server 2022 domain controller and a Windows 11 client, I gained hands-on experience configuring essential enterprise services, including Active Directory Domain Services (AD DS), DNS, DHCP, and RAS/NAT. I also used PowerShell to automate user account creation, reinforcing the importance of scripting and automation in systems administration.
+
+Completing this project strengthened my understanding of Windows Server administration, domain management, user and group administration, network services, and virtualization. It also provided practical experience troubleshooting connectivity, authentication, and configuration issues commonly encountered in enterprise environments.
+
+Overall, this home lab simulates a real-world IT infrastructure and demonstrates my ability to plan, deploy, configure, and manage a Windows Active Directory environment. The knowledge and skills gained through this project provide a strong foundation for roles in IT support, systems administration, and cybersecurity while preparing me for more advanced enterprise networking and security projects.
