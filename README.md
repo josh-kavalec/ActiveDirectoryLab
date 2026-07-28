@@ -39,3 +39,4 @@ Before we create our client virtual machine, the final thing we do in the Domain
 <h1 align="center">Step 6:</h1>
 After creating the users, we’re going to create another virtual machine and install Windows 11 and that virtual machine will be connected to the private VirtualBox network. We will name that machine Client 1 and join it to the domain. We will then log in with one of the domain accounts.
 
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%206.png?raw=true)
