@@ -270,3 +270,72 @@ Under NAT Internet Connection, select the Network Interface “Internet” which
 We have now configured both the Remote Access Service (RAS) and Network Address Translation (NAT). Since this is completed, once we create our Windows 11 clients, they should be able to connect to the Internet. 
 
 # Step 4 Walkthrough:
+
+The next step in our Network Diagram is to set up the DHCP Server on our Domain Controller. This will allow our Windows 11 Clients to get an IP address which will allow them to connect to the Internet even though they will be on their own Private Network. 
+
+To set up DHCP, we will go back to the Server Manager Dashboard. Click Add roles and Features. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/53.png?raw=true)
+
+Select Next through Before you Begin, Installation Type, and Server Selection. Under Server Roles, select DHCP Server. Click Next
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/54.png?raw=true)
+
+Continue to click Next, and then click Install.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/55.png?raw=true)
+
+Once Installed we can return to the Server Manager Dashboard. 
+
+From here we will click on Tools in the top right corner and Select DHCP. Here we will set up our scope. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/56.png?raw=true)
+
+The purpose of DHCP is to allow the computers on the network to be automatically assigned an IP address. Looking at our Network Diagram, we will configure DHCP based on the following: 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/Active%20Directory%20Screenshot%204.png?raw=true)
+
+We will click the arrow next to dc.mydomain.com
+Notice how we have both IPv4 and IPv6 with red errors indicating they are not yet up and running. We will right click on IPv4 and select New Scope. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/57.png?raw=true)
+
+For the Scope Name, we are going to name it after the IP range listed in the Network Diagram. Click Next.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/58.png?raw=true)
+
+We will then insert the Start/End IP addresses. We will also insert the Subnet Mask based on our Network Diagram as 255.255.255.0
+Click Next
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/59.png?raw=true)
+
+Click Next through Add Exclusions and Delay. Under Lease Duration, for our Virtual Machine purpose, I will increase the duration to 365 days. Click Next. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/60.png?raw=true)
+
+Under Configure DHCP Options, select “Yes, I want to configure these options now” and click Next. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/61.png?raw=true)
+
+Since we configured NAT on the Domain Controller and it has Routing configured, it will forward traffic from the clients to the Internet. Because of this, the clients are able to use the Internal Network Adapter of the Domain Controller as their Default Gateway/ Router. For our DHCP configuration, we will enter the Domain Controller’s IP address under Router (Default Gateway). Make sure to click Add before clicking Next. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/62.png?raw=true)
+
+Since we installed Active Directory on the Domain Controller, it automatically installed the Domain Name System (DNS). Because of this, we are going to use the Domain Controller as our DNS Server. 
+Under Domain Name and DNS Server, select Next. 
+ 
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/63.png?raw=true)
+
+Click Next through WINS Server, then select “Yes, I want to activate this scope now” under Activate Scope. Click Next. Click Finish. 
+To make sure DHCP is up in running we will right click on dc.domain.com and select Authorize. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/64.png?raw=true)
+
+Then right click on dc.domain.com again and select Refresh.
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/65.png?raw=true)
+
+We can now see that our IPv4 and IPv6 have turned green which indicates that our DNS is now set up. You may also notice that the Scope is set up as well. 
+
+![image alt](https://github.com/josh-kavalec/ActiveDirectoryLab/blob/main/66.png?raw=true)
+
